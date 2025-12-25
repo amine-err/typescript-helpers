@@ -1,4 +1,4 @@
-type Not<N, T, A = any> = [T] extends [N] ? never : (
+export type Not<N, T, A = any> = [T] extends [N] ? never : (
   [T] extends [A] ? T : never
 );
 
@@ -36,4 +36,3 @@ const nonEmptyString = not<'', string>().infer(''); // gives a type error as it 
 const nonZeroNumber = not<0, number>().infer(0); // gives a type error as it is 0
 const anyButFunction = not<Function>().infer(()=>{}) // gives  a type error as it is a function
 const anyStringBut = not<'a' | 'b', string>().infer('b') // gives a type error as it is 'b'
-
