@@ -42,9 +42,9 @@ takesFinite(NaN); // gives type error as it is inferred to `number`
 // Limitations
 
 // This won't work as expected
-let value1 = 20; // values is inferred as just `number`.
-let num1: FiniteNumber<typeof value1> = value1; // won't work as `typeof value` is `number` and not  the literal `20`.
+let value1 = 20; // value1 is inferred as just `number`.
+let num1: FiniteNumber<typeof value1> = value1; // won't work as `typeof value1` is `number` and not  the literal `20`.
 
 // This will work
-const value2 = 20; // values is inferred as the literal `20`.
-let num2: FiniteNumber<typeof value2> = value2; // works because `typeof value` is the literal `20`.
+const value2 = 20; // value2 is inferred as the literal `20`.
+let num2: FiniteNumber<typeof value2> = value2; // works because `typeof value2` is the literal `20`.
