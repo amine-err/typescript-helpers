@@ -2,9 +2,7 @@ import { Not } from "./ts-not";
 
 type Infinity = 1e999 | -1e999;
 type LiteralNumber<T> = T extends number ? (
-  number extends T ? never : (
-    T extends Infinity ? never : T
-  )
+  number extends T ? never : T
 ) : never;
 type FiniteNumber<T> = Not<Infinity, T, LiteralNumber<T>>;
 
