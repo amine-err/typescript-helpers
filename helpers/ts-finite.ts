@@ -7,15 +7,16 @@ type FiniteNumber<T> = T extends number ? (
 
 const takesFiniteNumber = <T extends number>(n: FiniteNumber<T>) => n;
 
+takesFiniteNumber(''); // gives type error as it isn't a number
 takesFiniteNumber(10);
 takesFiniteNumber(3.14);
 takesFiniteNumber(-42.5);
 takesFiniteNumber(1e6);
-takesFiniteNumber(1e999);
-takesFiniteNumber(-1e999);
-takesFiniteNumber(Infinity);
-takesFiniteNumber(-Infinity);
-takesFiniteNumber(NaN);
+takesFiniteNumber(1e999); // gives type error as it is inferred to `Infinity`
+takesFiniteNumber(-1e999); // gives type error as it is inferred to `-Infinity`
+takesFiniteNumber(Infinity); // gives type error as it is inferred to `number`
+takesFiniteNumber(-Infinity); // gives type error as it is inferred to `number`
+takesFiniteNumber(NaN); // gives type error as it is inferred to `number`
 
 // We can also implement this using the `Not` type helper from ./ts-not.ts
 
@@ -27,12 +28,13 @@ type Finite<T> = Not<Infinity, T, LiteralNumber<T>>; // Same as `FiniteNumber`, 
 
 const takesFinite = <T extends number>(n: Finite<T>) => n;
 
+takesFinite(''); // gives type error as it isn't a number
 takesFinite(10);
 takesFinite(3.14);
 takesFinite(-42.5);
 takesFinite(1e6);
-takesFinite(1e999);
-takesFinite(-1e999);
-takesFinite(Infinity);
-takesFinite(-Infinity);
-takesFinite(NaN);
+takesFinite(1e999); // gives type error as it is inferred to `Infinity`
+takesFinite(-1e999); // gives type error as it is inferred to `-Infinity`
+takesFinite(Infinity); // gives type error as it is inferred to `number`
+takesFinite(-Infinity); // gives type error as it is inferred to `number`
+takesFinite(NaN); // gives type error as it is inferred to `number`
