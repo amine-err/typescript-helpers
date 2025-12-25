@@ -19,3 +19,14 @@ takesFiniteNumber(-1e999);
 takesFiniteNumber(Infinity);
 takesFiniteNumber(-Infinity);
 takesFiniteNumber(NaN);
+
+/* 
+// In this use case `Not` is not really needed, you can just implement it directly with `LiteralNumber`:
+type FiniteNumber<T> = T extends number ? (
+  number extends T ? never : (
+    T extends Infinity ? never : (
+      T extends Infinity ? never : T
+    )
+  )
+) : never;
+ */
