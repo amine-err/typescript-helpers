@@ -12,11 +12,11 @@ takesFiniteNumber(10);
 takesFiniteNumber(3.14);
 takesFiniteNumber(-42.5);
 takesFiniteNumber(1e6);
-takesFiniteNumber(1e999); // gives type error as it is inferred to `Infinity`
-takesFiniteNumber(-1e999); // gives type error as it is inferred to `-Infinity`
-takesFiniteNumber(Infinity); // gives type error as it is inferred to `number`
-takesFiniteNumber(-Infinity); // gives type error as it is inferred to `number`
-takesFiniteNumber(NaN); // gives type error as it is inferred to `number`
+takesFiniteNumber(1e999); // gives type error as it is inferred as `Infinity`
+takesFiniteNumber(-1e999); // gives type error as it is inferred as `-Infinity`
+takesFiniteNumber(Infinity); // gives type error as it is inferred as `number`
+takesFiniteNumber(-Infinity); // gives type error as it is inferred as `number`
+takesFiniteNumber(NaN); // gives type error as it is inferred as `number`
 
 // We can also implement this using the `Not` type helper from ./ts-not.ts
 
@@ -33,17 +33,17 @@ takesFinite(10);
 takesFinite(3.14);
 takesFinite(-42.5);
 takesFinite(1e6);
-takesFinite(1e999); // gives type error as it is inferred to `Infinity`
-takesFinite(-1e999); // gives type error as it is inferred to `-Infinity`
-takesFinite(Infinity); // gives type error as it is inferred to `number`
-takesFinite(-Infinity); // gives type error as it is inferred to `number`
-takesFinite(NaN); // gives type error as it is inferred to `number`
+takesFinite(1e999); // gives type error as it is inferred as `Infinity`
+takesFinite(-1e999); // gives type error as it is inferred as `-Infinity`
+takesFinite(Infinity); // gives type error as it is inferred as `number`
+takesFinite(-Infinity); // gives type error as it is inferred as `number`
+takesFinite(NaN); // gives type error as it is inferred as `number`
 
 // Limitations
 
 // This won't work as expected
 let value1 = 20; // value1 is inferred as just `number`.
-let num1: FiniteNumber<typeof value1> = value1; // won't work as `typeof value1` is `number` and not  the literal `20`.
+let num1: FiniteNumber<typeof value1> = value1; // won't work as `typeof value1` is `number` and not the literal `20`.
 
 // This will work
 const value2 = 20; // value2 is inferred as the literal `20`.
